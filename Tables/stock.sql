@@ -1,0 +1,17 @@
+﻿CREATE TABLE `stock` (
+  `StoreId` INT NOT NULL,
+  `ProductId` INT NOT NULL,
+  `Qty` INT DEFAULT NULL,
+  PRIMARY KEY (StoreId, ProductId)
+)
+ENGINE = INNODB,
+CHARACTER SET utf8mb4,
+COLLATE utf8mb4_0900_ai_ci;
+
+ALTER TABLE `stock` 
+  ADD CONSTRAINT `stock_ibfk_1` FOREIGN KEY (StoreId)
+    REFERENCES store(StoreId) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `stock` 
+  ADD CONSTRAINT `stock_ibfk_2` FOREIGN KEY (ProductId)
+    REFERENCES product(ProductId) ON DELETE CASCADE ON UPDATE CASCADE;

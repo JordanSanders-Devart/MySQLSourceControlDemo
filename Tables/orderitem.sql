@@ -1,0 +1,19 @@
+﻿CREATE TABLE `orderitem` (
+  `OrderId` INT DEFAULT NULL,
+  `ItemId` INT DEFAULT NULL,
+  `ProductId` INT NOT NULL,
+  `Qty` INT NOT NULL,
+  `Price` DECIMAL(10, 2) NOT NULL,
+  `Discount` DECIMAL(4, 2) NOT NULL DEFAULT 0.00
+)
+ENGINE = INNODB,
+CHARACTER SET utf8mb4,
+COLLATE utf8mb4_0900_ai_ci;
+
+ALTER TABLE `orderitem` 
+  ADD CONSTRAINT `orderitem_ibfk_1` FOREIGN KEY (OrderId)
+    REFERENCES `order`(OrderId) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `orderitem` 
+  ADD CONSTRAINT `orderitem_ibfk_2` FOREIGN KEY (ProductId)
+    REFERENCES product(ProductId) ON DELETE CASCADE ON UPDATE CASCADE;
